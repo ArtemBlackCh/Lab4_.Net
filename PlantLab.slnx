@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PlantLib/PlantLib.csproj" />
+  <Project Path="PlantTests/PlantTests.csproj" />
+  <Project Path="PlantApp/PlantApp.csproj" />
+</Solution>

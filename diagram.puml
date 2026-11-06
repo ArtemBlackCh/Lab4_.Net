@@ -1,0 +1,53 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface IWaterable {
+  +Water() : string
+}
+interface IPlantable {
+  +PlantIt() : string
+}
+interface IBloomable {
+  +DetermineBloomDuration() : int
+}
+
+abstract class Plant {
+  +Name : string
+  +Type : string
+  +GrowingPlace : string
+  +Water() : string
+  +PlantIt() : string
+  +{abstract} GetInfo() : string
+}
+class Tree {
+  +Age : int
+  +CalculateLeavesCount() : int
+  +GetInfo() : string
+}
+class Flower {
+  +Color : string
+  +DetermineBloomDuration() : int
+  +GetInfo() : string
+}
+class Shrub {
+  +Height : int
+  +DetermineBloomDuration() : int
+  +GetInfo() : string
+}
+class PlantCalculator <<static>> {
+  +GetAverageTreeAge(plants) : double
+  +GetMaxBloomDuration(plants) : int
+}
+
+Plant <|-- Tree
+Plant <|-- Flower
+Plant <|-- Shrub
+
+Plant ..|> IWaterable
+Plant ..|> IPlantable
+Flower ..|> IBloomable
+Shrub ..|> IBloomable
+
+PlantCalculator ..> Plant
+PlantCalculator ..> IBloomable
+@enduml
